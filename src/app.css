@@ -1,0 +1,196 @@
+:root {
+    --primary: #4f46e5;
+    --accent: #06b6d4;
+    --bg-dark: #0f172a;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+}
+
+/* --- Sidebar UI --- */
+#sidebar {
+    width: 450px;
+    height: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid var(--glass-border);
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+}
+
+h2, h3 {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+h3 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
+
+.control-group {
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+/* Inputs & Selects */
+input[type="number"], select, input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    color: white;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(0,0,0,0.5);
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    margin-top: 10px;
+}
+
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-danger {
+    background: transparent;
+    color: #ef4444;
+    width: auto;
+    padding: 5px;
+}
+.btn-danger:hover { color: #f87171; }
+
+/* Dynamic Lists */
+#source-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.source-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent);
+    font-size: 0.85rem;
+}
+
+/* Results Panel */
+.result-box {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #a5f3fc;
+    margin-bottom: 5px;
+}
+
+/* Coordinate Inputs Grid */
+.coord-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+/* Main Plot Area */
+#plot-container {
+    flex-grow: 1;
+    position: relative;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
+
+#plotDiv {
+    width: 100%;
+    height: 100%;
+}
+
+/* Conditional Inputs */
+.hidden { display: none; }
+
+/* Checkbox wrapper */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+.checkbox-wrapper input { width: auto; }
+.checkbox-wrapper label { margin: 0; }
+
+.label-text {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color); /* adjust to match your theme */
+}
